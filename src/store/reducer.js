@@ -11,10 +11,10 @@ export const reducer = (state, action) => {
         ...state,
         theme: action.payload,
       };
-    case "CHANGE_TYPE_SEARCH":
+    case "CHANGE_TYPE":
       return {
         ...state,
-        typeSearch: action.payload,
+        type: action.payload,
       };
     case "CHANGE_KEYWORD":
       return {

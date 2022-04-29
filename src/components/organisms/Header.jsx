@@ -3,10 +3,9 @@ import Navigation from "../molecules/Navigation";
 
 const Header = () => {
   const { state, dispatch } = UseGlobalContext();
-  const { theme } = state;
+  const { theme, type } = state;
 
   const handleChangeTheme = () => {
-    console.log("masuk");
     const newTheme = theme === "light" ? "dark" : "light";
     const html = document.querySelector("html");
 
@@ -22,7 +21,9 @@ const Header = () => {
     }
   };
 
-  const handleChangeType = () => {};
+  const handleChangeType = (e) => {
+    dispatch({ type: "CHANGE_TYPE", payload: e });
+  };
 
   return (
     <header>
@@ -30,6 +31,7 @@ const Header = () => {
         changeTheme={handleChangeTheme}
         changeType={handleChangeType}
         theme={theme}
+        type={type}
       />
     </header>
   );
