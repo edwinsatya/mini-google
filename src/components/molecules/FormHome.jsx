@@ -12,7 +12,7 @@ const FormHome = ({ keyword, onChange, onSubmit }) => {
             className="w-full bg-white dark:bg-bg-dark md:py-3 md:px-4 border border-gray-400 rounded-full focus:outline-none focus:drop-shadow-md focus:dark:border-bg-dark focus:dark:bg-[#303134] hover:drop-shadow-md hover:dark:border-bg-dark hover:dark:bg-[#303134]"
             type="text"
             value={keyword}
-            onChange={onChange}
+            onChange={(e) => onChange(e.target.value)}
           />
         </div>
 
@@ -27,13 +27,15 @@ const FormHome = ({ keyword, onChange, onSubmit }) => {
             text="i'm feeling lucky"
           />
         </div>
+        <div>
+          <Button
+            className="text-blue-500 dark:text-blue-300 text-xs lg:text-sm hover:underline"
+            text="Share Eid greeting cards with Google"
+            type="submit"
+            onClick={() => onChange("idul fitri")}
+          />
+        </div>
       </form>
-      <div>
-        <Button
-          className="text-blue-500 dark:text-blue-300 text-xs lg:text-sm hover:underline"
-          text="Share Eid greeting cards with Google"
-        />
-      </div>
     </>
   );
 };

@@ -9,12 +9,14 @@ const FormWithHero = () => {
   const { keyword, type } = state;
 
   const handleChangeInput = (e) => {
-    dispatch({ type: "CHANGE_KEYWORD", payload: e.target.value });
+    dispatch({ type: "CHANGE_KEYWORD", payload: e });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate(`/${type}?q=${keyword}`);
+    const query = keyword.split(" ").join("+");
+    console.log(query, "join");
+    navigate(`/${type}?q=${query}`);
   };
 
   return (
