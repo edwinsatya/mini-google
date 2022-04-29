@@ -1,8 +1,9 @@
-import { useContext } from "react";
-import { ThemeContext } from "../../store/themeContext";
+import { UseGlobalContext } from "../../store/context";
 
 const GoogleLogo = ({ className }) => {
-  const { theme } = useContext(ThemeContext);
+  const { state } = UseGlobalContext();
+  const { theme } = state;
+
   if (theme === "dark") {
     return (
       <img

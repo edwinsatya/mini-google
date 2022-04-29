@@ -1,14 +1,20 @@
-import React from "react";
-import { useLocation, useParams } from "react-router-dom";
+import Layout from "../components/organisms/Layout";
+import { useNavigate } from "react-router-dom";
 
 const Search = () => {
-  const params = useParams();
-  const location = useLocation();
+  const navigate = useNavigate();
 
-  console.log(params, "params");
-  console.log(location, "location");
+  const meta = {
+    title: "Google",
+    desc: "Search engine google api",
+  };
 
-  return <div>Search</div>;
+  return (
+    <Layout {...meta}>
+      <h1>Search</h1>
+      <button onClick={() => navigate("/")}>back</button>
+    </Layout>
+  );
 };
 
 export default Search;
