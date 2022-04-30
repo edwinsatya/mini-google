@@ -1,20 +1,29 @@
-import { useLocation } from "react-router-dom";
 import Layout from "../components/organisms/Layout";
+import { useLocation } from "react-router-dom";
+import { UseGlobalContext } from "../store/context";
+import { useEffect } from "react";
 
 const ImageSearch = () => {
-  const location = useLocation();
-  console.log(location.pathname);
   const meta = {
-    title: "Google",
+    title: "Google Search",
     desc: "Search engine google api",
   };
+  const { dispatch } = UseGlobalContext();
+  const query = useLocation().search;
+  const pathUrl = useLocation().pathname;
+
+  useEffect(() => {
+    const keyword = query.slice(3).split("+").join(" ");
+    const type = pathUrl.substring(1);
+    dispatch({ type: "CHANGE_KEYWORD", payload: keyword });
+    dispatch({ type: "CHANGE_TYPE", payload: type });
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <Layout {...meta}>
-      <section>ImageSearch</section>
+      <section className="px-4 lg:px-24">image search</section>
     </Layout>
   );
-  // return <div>ImageSearch</div>;
 };
 
 export default ImageSearch;

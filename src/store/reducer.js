@@ -21,6 +21,12 @@ export const reducer = (state, action) => {
         ...state,
         keyword: action.payload,
       };
+    case "RESET_FILTER":
+      return {
+        ...state,
+        type: "search",
+        keyword: "",
+      };
     default:
       return state;
   }

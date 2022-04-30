@@ -1,21 +1,21 @@
 import { UseGlobalContext } from "../../store/context";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { getQueryPath } from "../../helpers/getQueryPath";
 import FormHome from "../molecules/FormHome";
 import Hero from "../molecules/Hero";
 
 const FormWithHero = () => {
   const navigate = useNavigate();
   const { state, dispatch } = UseGlobalContext();
-  const [input, setInput] = useState("");
   const { type } = state;
+  const [input, setInput] = useState("");
 
   const handleChangeInput = (e) => {
     setInput(() => e);
   };
 
   const handleClearInput = (e) => {
-    // dispatch({ type: "CHANGE_KEYWORD", payload: "" });
     setInput(() => "");
   };
 
@@ -23,11 +23,7 @@ const FormWithHero = () => {
     e.preventDefault();
     if (input) {
       dispatch({ type: "CHANGE_KEYWORD", payload: input });
-      const query = input
-        .split(" ")
-        .filter((e) => e)
-        .join("+");
-      navigate(`/${type}?q=${query}`);
+      navigate(getQueryPath(type, input));
     }
   };
 

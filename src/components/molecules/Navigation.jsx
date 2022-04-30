@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { getActiveClass } from "../../helpers/getActiveClass";
 import { UseGlobalContext } from "../../store/context";
 import Button from "../atoms/Button";
 import GoogleLogo from "../atoms/GoogleLogo";
@@ -8,11 +9,8 @@ import IconSearch from "../atoms/IconSvg/IconSearch";
 import InputText from "../atoms/InputText";
 
 const Navigation = ({ changeTheme, changeType, theme, type }) => {
-  const currentTypeSelected = (typeCheck) => {
-    if (typeCheck === type) {
-      return "border-b-2 border-black dark:border-white";
-    }
-    return "";
+  const activeClass = (typeCheck) => {
+    return getActiveClass(typeCheck, type);
   };
 
   const { state, dispatch } = UseGlobalContext();
@@ -40,27 +38,27 @@ const Navigation = ({ changeTheme, changeType, theme, type }) => {
           <li>|</li>
           <li>
             <Button
-              className={`${currentTypeSelected(
+              className={`${activeClass(
                 "search"
-              )} capitalize font-semibold text-xs lg:text-base`}
+              )} capitalize font-semibold text-xs lg:text-base border-b-2 lg:border-b-4`}
               text="Search"
               onClick={() => changeType("search")}
             />
           </li>
           <li>
             <Button
-              className={`${currentTypeSelected(
+              className={`${activeClass(
                 "image"
-              )} capitalize font-semibold text-xs lg:text-base`}
+              )} capitalize font-semibold text-xs lg:text-base border-b-2 lg:border-b-4`}
               text="Image"
               onClick={() => changeType("image")}
             />
           </li>
           <li>
             <Button
-              className={`${currentTypeSelected(
+              className={`${activeClass(
                 "news"
-              )} capitalize font-semibold text-xs lg:text-base`}
+              )} capitalize font-semibold text-xs lg:text-base border-b-2 lg:border-b-4`}
               text="News"
               onClick={() => changeType("news")}
             />
@@ -90,12 +88,17 @@ const Navigation = ({ changeTheme, changeType, theme, type }) => {
     }
   };
 
+  const handleBackToHome = () => {
+    dispatch({ type: "RESET_FILTER" });
+    navigate("/");
+  };
+
   return (
-    <nav className="py-4 px-4 lg:pl-24 lg:py-10 flex justify-between items-center gap-3">
+    <nav className="py-4 px-4 lg:pl-24 lg:py-7 flex justify-between items-center gap-3">
       <div className="flex gap-3 lg:gap-12 items-center">
         <GoogleLogo
           className="w-2/12 max-w-lg cursor-pointer"
-          onClick={() => navigate("/")}
+          onClick={handleBackToHome}
         />
         <form className="w-9/12 lg:max-w-xl relative" onSubmit={handleSubmit}>
           <IconSearch className="z-10 text-gray-400 absolute bottom-0 transform h-4 w-4 left-2 -translate-y-1 md:h-6 md:w-6 md:left-3 md:-translate-y-3" />
