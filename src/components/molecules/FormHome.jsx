@@ -18,10 +18,12 @@ const FormHome = ({ keyword, onChange, onSubmit, clearInput }) => {
             value={keyword}
             onChange={onChange}
           />
-          <IconClose
-            className="z-10 text-gray-400 absolute bottom-0 transform h-4 w-4 right-2 -translate-y-1 md:h-6 md:w-6 md:right-3 md:-translate-y-3"
-            onClick={clearInput}
-          />
+          {keyword && (
+            <IconClose
+              className="z-10 text-gray-400 absolute bottom-0 transform h-4 w-4 right-2 -translate-y-1 md:h-6 md:w-6 md:right-3 md:-translate-y-3"
+              onClick={clearInput}
+            />
+          )}
         </div>
 
         <div className="flex gap-2 lg:gap-4">

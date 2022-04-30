@@ -32,7 +32,7 @@ const Navigation = ({ changeTheme, changeType, theme, type }) => {
         <ul className="flex justify-end items-center gap-3 lg:gap-6">
           <li>
             <Button
-              className="capitalize font-semibold text-xs lg:text-sm border bg-[#FBBC04] dark:bg-[#303134] border-gray-500 rounded-lg py-1 px-2"
+              className="capitalize font-semibold text-xs lg:text-sm border bg-yellow-400 dark:bg-[#303134] border-gray-500 rounded-lg py-1 px-2"
               text={theme}
               onClick={changeTheme}
             />
@@ -106,11 +106,12 @@ const Navigation = ({ changeTheme, changeType, theme, type }) => {
             value={input}
             onChange={handleChangeInput}
           />
-
-          <IconClose
-            onClick={handleClearInput}
-            className="z-10 text-gray-400 absolute bottom-0 transform h-4 w-4 right-2 -translate-y-1 md:h-6 md:w-6 md:right-3 md:-translate-y-3"
-          />
+          {input && (
+            <IconClose
+              onClick={handleClearInput}
+              className="z-10 text-gray-400 absolute bottom-0 transform h-4 w-4 right-2 -translate-y-1 md:h-6 md:w-6 md:right-3 md:-translate-y-3"
+            />
+          )}
         </form>
       </div>
       <ul className="flex justify-end items-center gap-3 lg:gap-6">
