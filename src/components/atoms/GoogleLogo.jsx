@@ -1,6 +1,6 @@
 import { UseGlobalContext } from "../../store/context";
 
-const GoogleLogo = ({ className }) => {
+const GoogleLogo = ({ className, onClick }) => {
   const { state } = UseGlobalContext();
   const { theme } = state;
 
@@ -10,6 +10,7 @@ const GoogleLogo = ({ className }) => {
         className={className}
         src={require("../../assets/images/google-white.png")}
         alt="logo-google"
+        onClick={onClick}
       />
     );
   }
@@ -19,6 +20,7 @@ const GoogleLogo = ({ className }) => {
       className={className}
       src={require("../../assets/images/google-full.png")}
       alt="logo-google"
+      onClick={onClick}
     />
   );
 };

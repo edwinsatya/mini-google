@@ -7,3 +7,9 @@
     @apply bg-white dark:bg-bg-dark px-6 py-1 text-xs md:text-base md:py-3 md:px-10 border border-gray-400 rounded-full focus:outline-none focus:drop-shadow-md focus:dark:border-bg-dark focus:dark:bg-[#303134] hover:drop-shadow-md hover:dark:border-bg-dark hover:dark:bg-[#303134];
   }
 }
+
+@layer base {
+  body {
+    @apply bg-white dark:bg-bg-dark text-gray-900 dark:text-white transition-all ease-linear duration-200;
+  }
+}

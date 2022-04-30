@@ -15,7 +15,8 @@ const FormWithHero = () => {
   };
 
   const handleClearInput = (e) => {
-    dispatch({ type: "CHANGE_KEYWORD", payload: "" });
+    // dispatch({ type: "CHANGE_KEYWORD", payload: "" });
+    setInput(() => "");
   };
 
   const handleSubmit = (e) => {

@@ -4,7 +4,7 @@ import Footer from "./Footer";
 
 const Layout = ({ children, title, desc }) => {
   return (
-    <div className="min-h-screen h-full w-full bg-white dark:bg-bg-dark text-gray-900 dark:text-white transition-all ease-linear duration-200">
+    <div className="min-h-screen h-full w-full max-w-7xl flex flex-col mx-auto">
       <Helmet>
         <meta charSet="utf-8" />
         <title>{title}</title>
@@ -13,7 +13,7 @@ const Layout = ({ children, title, desc }) => {
 
       <Header />
 
-      <main className="h-full">{children}</main>
+      <main className="h-full px-4 lg:px-24">{children}</main>
 
       <Footer />
     </div>
