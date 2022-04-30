@@ -1,18 +1,26 @@
 import Button from "../atoms/Button";
+import IconClose from "../atoms/IconSvg/IconClose";
+import IconSearch from "../atoms/IconSvg/IconSearch";
+import InputText from "../atoms/InputText";
 
-const FormHome = ({ keyword, onChange, onSubmit }) => {
+const FormHome = ({ keyword, onChange, onSubmit, clearInput }) => {
   return (
     <>
       <form
         className="flex flex-col items-center gap-7 w-full"
         onSubmit={onSubmit}
       >
-        <div className="w-9/12 lg:max-w-xl">
-          <input
-            className="w-full bg-white dark:bg-bg-dark md:py-3 md:px-4 border border-gray-400 rounded-full focus:outline-none focus:drop-shadow-md focus:dark:border-bg-dark focus:dark:bg-[#303134] hover:drop-shadow-md hover:dark:border-bg-dark hover:dark:bg-[#303134]"
+        <div className="w-9/12 lg:max-w-xl relative">
+          <IconSearch className="z-10 text-gray-400 absolute bottom-0 transform h-4 w-4 left-2 -translate-y-1 md:h-6 md:w-6 md:left-3 md:-translate-y-3" />
+          <InputText
+            className="input-text"
             type="text"
             value={keyword}
-            onChange={(e) => onChange(e.target.value)}
+            onChange={onChange}
+          />
+          <IconClose
+            className="z-10 text-gray-400 absolute bottom-0 transform h-4 w-4 right-2 -translate-y-1 md:h-6 md:w-6 md:right-3 md:-translate-y-3"
+            onClick={clearInput}
           />
         </div>
 
@@ -25,6 +33,9 @@ const FormHome = ({ keyword, onChange, onSubmit }) => {
           <Button
             className="capitalize bg-gray-100 dark:bg-[#303134] text-xs p-1 w-28 lg:text-base lg:px-3 lg:py-2 lg:w-40 rounded-md text-center border border-white dark:border-black hover:border-gray-400 hover:dark:border-gray-400"
             text="i'm feeling lucky"
+            onClick={() =>
+              window.open("https://www.google.com/doodles", "_blank").focus()
+            }
           />
         </div>
         <div>

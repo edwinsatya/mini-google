@@ -1,3 +1,4 @@
+import { useLocation } from "react-router-dom";
 import Button from "../atoms/Button";
 
 const Navigation = ({ changeTheme, changeType, theme, type }) => {
@@ -7,6 +8,8 @@ const Navigation = ({ changeTheme, changeType, theme, type }) => {
     }
     return "";
   };
+
+  const location = useLocation();
 
   return (
     <nav className="py-4 px-4 lg:px-12">
@@ -18,34 +21,38 @@ const Navigation = ({ changeTheme, changeType, theme, type }) => {
             onClick={changeTheme}
           />
         </li>
-        <li>|</li>
-        <li>
-          <Button
-            className={`${currentTypeSelected(
-              "search"
-            )} capitalize font-semibold text-xs lg:text-base`}
-            text="Search"
-            onClick={() => changeType("search")}
-          />
-        </li>
-        <li>
-          <Button
-            className={`${currentTypeSelected(
-              "image"
-            )} capitalize font-semibold text-xs lg:text-base`}
-            text="Image"
-            onClick={() => changeType("image")}
-          />
-        </li>
-        <li>
-          <Button
-            className={`${currentTypeSelected(
-              "news"
-            )} capitalize font-semibold text-xs lg:text-base`}
-            text="News"
-            onClick={() => changeType("news")}
-          />
-        </li>
+        {location.pathname === "/" && (
+          <div className="flex gap-3 items-center lg:gap-6">
+            <li>|</li>
+            <li>
+              <Button
+                className={`${currentTypeSelected(
+                  "search"
+                )} capitalize font-semibold text-xs lg:text-base`}
+                text="Search"
+                onClick={() => changeType("search")}
+              />
+            </li>
+            <li>
+              <Button
+                className={`${currentTypeSelected(
+                  "image"
+                )} capitalize font-semibold text-xs lg:text-base`}
+                text="Image"
+                onClick={() => changeType("image")}
+              />
+            </li>
+            <li>
+              <Button
+                className={`${currentTypeSelected(
+                  "news"
+                )} capitalize font-semibold text-xs lg:text-base`}
+                text="News"
+                onClick={() => changeType("news")}
+              />
+            </li>
+          </div>
+        )}
       </ul>
     </nav>
   );
