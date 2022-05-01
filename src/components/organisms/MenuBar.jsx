@@ -1,17 +1,16 @@
-import Button from "../atoms/Button";
 import { UseGlobalContext } from "../../store/context";
 import { useNavigate } from "react-router-dom";
 import { getQueryPath } from "../../helpers/getQueryPath";
 import { getActiveClass } from "../../helpers/getActiveClass";
+import IconSearch from "../atoms/IconSvg/IconSearch";
+import IconPhotograph from "../atoms/IconSvg/IconPhotograph";
+import ButtonPrefixIcon from "../molecules/ButtonPrefixIcon";
+import IconNews from "../atoms/IconSvg/IconNews";
 
 const MenuBar = () => {
   const { state, dispatch } = UseGlobalContext();
   const { type, keyword } = state;
   const navigate = useNavigate();
-
-  const activeClass = (typeCheck) => {
-    return getActiveClass(typeCheck, type);
-  };
 
   const handleChangeMenu = (typeCheck) => {
     dispatch({ type: "CHANGE_TYPE", payload: typeCheck });
@@ -21,27 +20,24 @@ const MenuBar = () => {
 
   return (
     <section>
-      <div className="px-4 lg:px-24">
-        <Button
-          className={`${activeClass(
-            "search"
-          )} p-2 border-b-2 lg:p-4 lg:border-b-4`}
+      <div className="px-4 lg:px-24 flex text-gray-500 dark:text-gray-400">
+        <ButtonPrefixIcon
+          className={getActiveClass("search", type)}
           text="Search"
+          icon={<IconSearch className="w-3 h-3 lg:w-5 lg:h-5" />}
           onClick={() => handleChangeMenu("search")}
         />
-        <Button
-          className={`${activeClass(
-            "news"
-          )} p-2 border-b-2 lg:p-4 lg:border-b-4`}
-          text="News"
-          onClick={() => handleChangeMenu("news")}
-        />
-        <Button
-          className={`${activeClass(
-            "image"
-          )} p-2 border-b-2 lg:p-4 lg:border-b-4`}
+        <ButtonPrefixIcon
+          className={getActiveClass("image", type)}
           text="Image"
+          icon={<IconPhotograph className="w-3 h-3 lg:w-5 lg:h-5" />}
           onClick={() => handleChangeMenu("image")}
+        />
+        <ButtonPrefixIcon
+          className={getActiveClass("news", type)}
+          text="News"
+          icon={<IconNews className="w-3 h-3 lg:w-5 lg:h-5" />}
+          onClick={() => handleChangeMenu("news")}
         />
       </div>
       <hr className="border-b border-gray-200 dark:border-gray-700" />

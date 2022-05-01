@@ -2,6 +2,7 @@ import Layout from "../components/organisms/Layout";
 import { useLocation } from "react-router-dom";
 import { UseGlobalContext } from "../store/context";
 import { useEffect } from "react";
+import { TotalSearchResult } from "../components/molecules/TotalSearchResult";
 
 const Search = () => {
   const meta = {
@@ -21,7 +22,9 @@ const Search = () => {
 
   return (
     <Layout {...meta}>
-      <section className="px-4 lg:px-24">search</section>
+      <section className="px-4 lg:px-24">
+        <TotalSearchResult result="Sekitar 1.320.000.000 hasil (0,52 detik)" />
+      </section>
     </Layout>
   );
 };
