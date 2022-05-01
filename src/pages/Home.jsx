@@ -1,5 +1,6 @@
 import Layout from "../components/organisms/Layout";
 import FormWithHero from "../components/organisms/FormWithHero";
+import ContentWrapper from "../components/organisms/ContentWrapper";
 
 const Home = () => {
   const meta = {
@@ -9,7 +10,9 @@ const Home = () => {
 
   return (
     <Layout {...meta}>
-      <FormWithHero />
+      <ContentWrapper>
+        <FormWithHero />
+      </ContentWrapper>
     </Layout>
   );
 };

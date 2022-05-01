@@ -21,7 +21,7 @@ const Layout = ({ children, title, desc }) => {
         <main className="h-full">{children}</main>
       </div>
 
-      <Footer />
+      <Footer className={pathUrl === "/" ? "fixed" : ""} />
     </>
   );
 };

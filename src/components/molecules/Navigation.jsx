@@ -94,7 +94,7 @@ const Navigation = ({ changeTheme, changeType, theme, type }) => {
   };
 
   return (
-    <nav className="py-4 px-4 lg:pl-24 lg:py-6 flex justify-between items-center gap-3">
+    <nav className="py-4 px-4 lg:px-12 lg:pl-24 lg:py-6 flex justify-between items-center gap-3">
       <div className="flex gap-3 lg:gap-12 items-center">
         <GoogleLogo
           className="w-2/12 max-w-lg cursor-pointer"

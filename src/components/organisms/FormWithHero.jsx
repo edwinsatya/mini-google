@@ -28,7 +28,7 @@ const FormWithHero = () => {
   };
 
   return (
-    <section className="flex flex-col items-center gap-7">
+    <article className="flex flex-col items-center gap-7">
       <Hero />
       <FormHome
         keyword={input}
@@ -36,7 +36,7 @@ const FormWithHero = () => {
         onSubmit={handleSubmit}
         clearInput={handleClearInput}
       />
-    </section>
+    </article>
   );
 };
 
