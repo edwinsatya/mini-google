@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-const TextLink = ({ className, text, onHover, onLeave }) => {
+const TextLink = ({ className, text, onHover, onLeave, onClick }) => {
   const shorthLink = useMemo(() => {
     if (text.length > 30) {
       return text.substring(0, 30) + " > ...";
@@ -13,6 +13,7 @@ const TextLink = ({ className, text, onHover, onLeave }) => {
       className={`${className} cursor-pointer text-[10px] lg:text-[15px]`}
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
+      onClick={onClick}
     >
       {shorthLink}
     </p>

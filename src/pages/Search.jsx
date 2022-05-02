@@ -8,6 +8,7 @@ import CardsWrapper from "../components/molecules/Cards/CardsWrapper";
 import SearchCard from "../components/molecules/Cards/SearchCard";
 import getSearchApi from "../service/getSearchApi";
 import GoogleInfo from "../components/organisms/GoogleInfo";
+import Accordion from "../components/molecules/Accordion";
 
 const Search = () => {
   const meta = {
@@ -42,16 +43,28 @@ const Search = () => {
       {isLoading ? (
         <p>loading...</p>
       ) : (
-        <ContentWrapper className="px-1 lg:px-24">
+        <ContentWrapper className="px-1 pb-2 lg:pb-8 lg:px-24">
           <TotalSearchResult
-            total={dataApi.total ?? 0}
-            time={dataApi.ts ?? 0}
+            total={dataApi?.total ?? 0}
+            time={dataApi?.ts ?? 0}
           />
-          <div className="flex w-full gap-3">
+          <div className="flex w-full gap-3 lg:gap-10">
             <CardsWrapper className="w-full lg:w-8/12 flex flex-col gap-3">
-              {dataApi.results?.map((result, idx) => (
-                <SearchCard key={idx} result={result} />
-              ))}
+              {dataApi?.results?.map((result, idx) => {
+                if (idx === 1) {
+                  return (
+                    <div key={idx}>
+                      {dataApi.answers.length > 0 && (
+                        <Accordion dataAccordion={dataApi?.answers ?? []} />
+                      )}
+
+                      <SearchCard className="mt-3" result={result} />
+                    </div>
+                  );
+                } else {
+                  return <SearchCard key={idx} result={result} />;
+                }
+              })}
             </CardsWrapper>
             <GoogleInfo />
           </div>

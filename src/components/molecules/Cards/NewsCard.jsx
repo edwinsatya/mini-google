@@ -6,7 +6,7 @@ import Title from "../../atoms/Typography/Title";
 
 const NewsCard = ({ result, addNews, removeNews }) => {
   const [onHover, setOnHover] = useState(false);
-  const { id, title, source, inReadingList } = result;
+  const { title, source, inReadingList } = result;
 
   return (
     <div
