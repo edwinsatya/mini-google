@@ -129,10 +129,84 @@ const getSearchApi = async () => {
     results: [],
     total: null,
   };
+  let dataNews = {
+    entries: [
+      {
+        guidislink: false,
+        id: "CBMiaWh0dHBzOi8vd3d3LndoaXRlaG91c2UuZ292L2JyaWVmaW5ncy1zdGF0ZW1lbnRzL3ByZXNzLWJyaWVmaW5nLXByZXNzLXNlY3JldGFyeS1rYXlsZWlnaC1tY2VuYW55LTctOS0yMDIwL9IBAA",
+        link: "https://www.whitehouse.gov/briefings-statements/press-briefing-press-secretary-kayleigh-mcenany-7-9-2020/",
+        links: [
+          {
+            href: "https://www.whitehouse.gov/briefings-statements/press-briefing-press-secretary-kayleigh-mcenany-7-9-2020/",
+            rel: "alternate",
+            type: "text/html",
+          },
+        ],
+        published: "Thu, 09 Jul 2020 22:18:58 GMT",
+        published_parsed: [2020, 7, 9, 22, 18, 58, 3, 191, 0],
+        source: {
+          href: "https://www.whitehouse.gov",
+          title: "Whitehouse.gov",
+        },
+        sub_articles: [],
+        summary: "",
+        summary_detail: {
+          base: "",
+          language: null,
+          type: "text/html",
+          value: "",
+        },
+        title:
+          "Press Briefing by Press Secretary Kayleigh McEnany | 7/9/2020 - Whitehouse.gov",
+        title_detail: {
+          base: "",
+          language: null,
+          type: "text/plain",
+          value:
+            "Press Briefing by Press Secretary Kayleigh McEnany | 7/9/2020 - Whitehouse.gov",
+        },
+      },
+      {
+        guidislink: false,
+        id: "CBMiZ2h0dHBzOi8vd3d3LndoaXRlaG91c2UuZ292L2JyaWVmaW5ncy1zdGF0ZW1lbnRzL3ByZXNzLWJyaWVmaW5nLXByZXNzLXNlY3JldGFyeS1rYXlsZWlnaC1tY2VuYW55LTA3MDYyMC_SAQA",
+        link: "https://www.whitehouse.gov/briefings-statements/press-briefing-press-secretary-kayleigh-mcenany-7-9-2020/",
+        links: [
+          {
+            href: "https://www.whitehouse.gov/briefings-statements/press-briefing-press-secretary-kayleigh-mcenany-7-9-2020/",
+            rel: "alternate",
+            type: "text/html",
+          },
+        ],
+        published: "Thu, 09 Jul 2020 22:18:58 GMT",
+        published_parsed: [2020, 7, 9, 22, 18, 58, 3, 191, 0],
+        source: {
+          href: "https://www.whitehouse.gov",
+          title: "Whitehouse.gov",
+        },
+        sub_articles: [],
+        summary: "",
+        summary_detail: {
+          base: "",
+          language: null,
+          type: "text/html",
+          value: "",
+        },
+        title: "Press Briefing by Press BACOD",
+        title_detail: {
+          base: "",
+          language: null,
+          type: "text/plain",
+          value:
+            "Press Briefing by Press Secretary Kayleigh McEnany | 7/9/2020 - Whitehouse.gov",
+        },
+      },
+    ],
+    feed: {},
+  };
 
   const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
-      resolve(dataImg);
+      resolve(dataNews);
     }, 500);
   });
 

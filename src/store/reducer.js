@@ -2,9 +2,10 @@ export const initialState = {
   theme: "light",
   type: "search",
   keyword: "",
-  isLoading: true,
+  isLoading: false,
   isError: false,
   dataApi: {},
+  listReadingNews: {},
 };
 
 export const reducer = (state, action) => {
@@ -46,6 +47,11 @@ export const reducer = (state, action) => {
         dataApi: action.payload,
         isLoading: false,
         isError: false,
+      };
+    case "CHANGE_READING_NEWS":
+      return {
+        ...state,
+        listReadingNews: action.payload,
       };
     default:
       return state;

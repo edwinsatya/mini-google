@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-const Title = ({ className, text }) => {
+const Title = ({ className, text, onClick }) => {
   const shorthTitle = useMemo(() => {
     if (text.length > 100) {
       return text.substring(0, 100) + " ...";
@@ -8,7 +8,11 @@ const Title = ({ className, text }) => {
     return text;
   }, [text]);
 
-  return <h1 className={`${className} text-sm lg:text-2xl`}>{shorthTitle}</h1>;
+  return (
+    <h1 className={`${className} text-sm lg:text-2xl`} onClick={onClick}>
+      {shorthTitle}
+    </h1>
+  );
 };
 
 export default Title;

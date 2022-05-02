@@ -6,6 +6,7 @@ import IconSearch from "../atoms/IconSvg/IconSearch";
 import IconPhotograph from "../atoms/IconSvg/IconPhotograph";
 import ButtonPrefixIcon from "../molecules/ButtonPrefixIcon";
 import IconNews from "../atoms/IconSvg/IconNews";
+import IconCollection from "../atoms/IconSvg/IconCollection";
 
 const MenuBar = () => {
   const { state, dispatch } = UseGlobalContext();
@@ -41,8 +42,8 @@ const MenuBar = () => {
         />
         <ButtonPrefixIcon
           className={getActiveClass("reading-list", type)}
-          text="Reading List"
-          icon={<IconNews className="w-3 h-3 lg:w-5 lg:h-5" />}
+          text="ReadingList"
+          icon={<IconCollection className="w-3 h-3 lg:w-5 lg:h-5" />}
           onClick={() => handleChangeMenu("reading-list")}
         />
       </div>
