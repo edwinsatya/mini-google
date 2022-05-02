@@ -1,14 +1,19 @@
-import Layout from "../components/organisms/Layout";
 import { useLocation } from "react-router-dom";
 import { UseGlobalContext } from "../store/context";
 import { useEffect } from "react";
+import Layout from "../components/organisms/Layout";
+import getSearchApi from "../service/getSearchApi";
+import ContentWrapper from "../components/organisms/ContentWrapper";
+import CardsWrapper from "../components/molecules/Cards/CardsWrapper";
+import ImageCard from "../components/molecules/Cards/ImageCard";
 
 const ImageSearch = () => {
   const meta = {
     title: "Google Search",
     desc: "Search engine google api",
   };
-  const { dispatch } = UseGlobalContext();
+  const { state, dispatch } = UseGlobalContext();
+  const { dataApi, isLoading } = state;
   const query = useLocation().search;
   const pathUrl = useLocation().pathname;
 
@@ -17,11 +22,30 @@ const ImageSearch = () => {
     const type = pathUrl.substring(1);
     dispatch({ type: "CHANGE_KEYWORD", payload: keyword });
     dispatch({ type: "CHANGE_TYPE", payload: type });
+    dispatch({ type: "CHANGE_IS_LOADING", payload: true });
+
+    getSearchApi()
+      .then((res) => {
+        dispatch({ type: "SET_DATA_API", payload: res });
+      })
+      .catch((err) => {
+        dispatch({ type: "SET_IS_ERROR", payload: true });
+      });
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <Layout {...meta}>
-      <section className="px-4 lg:px-24">image search</section>
+      {isLoading ? (
+        <p>loading...</p>
+      ) : (
+        <ContentWrapper className="p-2 lg:p-6">
+          <CardsWrapper className="w-full flex flex-col lg:flex-row flex-wrap justify-center items-center gap-8">
+            {dataApi.image_results?.map((result, idx) => (
+              <ImageCard key={idx} result={result} />
+            ))}
+          </CardsWrapper>
+        </ContentWrapper>
+      )}
     </Layout>
   );
 };

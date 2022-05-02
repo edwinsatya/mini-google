@@ -1,12 +1,13 @@
-import Layout from "../components/organisms/Layout";
 import { useLocation } from "react-router-dom";
 import { UseGlobalContext } from "../store/context";
 import { useEffect } from "react";
 import { TotalSearchResult } from "../components/molecules/TotalSearchResult";
+import Layout from "../components/organisms/Layout";
 import ContentWrapper from "../components/organisms/ContentWrapper";
 import CardsWrapper from "../components/molecules/Cards/CardsWrapper";
 import SearchCard from "../components/molecules/Cards/SearchCard";
 import getSearchApi from "../service/getSearchApi";
+import GoogleInfo from "../components/organisms/GoogleInfo";
 
 const Search = () => {
   const meta = {
@@ -41,24 +42,18 @@ const Search = () => {
       {isLoading ? (
         <p>loading...</p>
       ) : (
-        <ContentWrapper className="px-4 lg:px-24">
+        <ContentWrapper className="px-1 lg:px-24">
           <TotalSearchResult
             total={dataApi.total ?? 0}
             time={dataApi.ts ?? 0}
           />
           <div className="flex w-full gap-3">
             <CardsWrapper className="w-full lg:w-8/12 flex flex-col gap-3">
-              {dataApi.results?.map((data, idx) => (
-                <SearchCard key={idx} result={data} />
+              {dataApi.results?.map((result, idx) => (
+                <SearchCard key={idx} result={result} />
               ))}
             </CardsWrapper>
-            <div className="hidden lg:flex w-4/12 bg-red-300">
-              <div className="">
-                <div>
-                  <h1>Google</h1>
-                </div>
-              </div>
-            </div>
+            <GoogleInfo />
           </div>
         </ContentWrapper>
       )}

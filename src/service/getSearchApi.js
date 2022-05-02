@@ -45,11 +45,95 @@ const getSearchApi = async () => {
     device_region: "EU",
     device_type: "desktop",
   };
+  let dataImg = {
+    answers: [],
+    image_results: [
+      {
+        image: {
+          alt: "Tesla Model S — Wikipédia",
+          src: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTcyfRzUGtO3mSZAAaAG-SbsljU7esjzmT5lQ&usqp=CAU",
+        },
+        link: {
+          domain: "fr.wikipedia.org",
+          href: "https://fr.wikipedia.org/wiki/Tesla_Model_S",
+          title: "Tesla Model S — Wikipédia",
+        },
+      },
+      {
+        image: {
+          alt: "Tesla Model S — Wikipédia",
+          src: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTwhfgafGneYwzBKaSEzGsS-ugj-3WHDGmAig&usqp=CAU",
+        },
+        link: {
+          domain: "fr.wikipedia.org",
+          href: "https://fr.wikipedia.org/wiki/Tesla_Model_S",
+          title: "Tesla Model S — Wikipédia",
+        },
+      },
+      {
+        image: {
+          alt: "Tesla Model S — Wikipédia",
+          src: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTwhfgafGneYwzBKaSEzGsS-ugj-3WHDGmAig&usqp=CAU",
+        },
+        link: {
+          domain: "fr.wikipedia.org",
+          href: "https://fr.wikipedia.org/wiki/Tesla_Model_S",
+          title: "Tesla Model S — Wikipédia",
+        },
+      },
+      {
+        image: {
+          alt: "Tesla Model S — Wikipédia",
+          src: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTwhfgafGneYwzBKaSEzGsS-ugj-3WHDGmAig&usqp=CAU",
+        },
+        link: {
+          domain: "fr.wikipedia.org",
+          href: "https://fr.wikipedia.org/wiki/Tesla_Model_S",
+          title: "Tesla Model S — Wikipédia",
+        },
+      },
+      {
+        image: {
+          alt: "Tesla Model S — Wikipédia",
+          src: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTwhfgafGneYwzBKaSEzGsS-ugj-3WHDGmAig&usqp=CAU",
+        },
+        link: {
+          domain: "fr.wikipedia.org",
+          href: "https://fr.wikipedia.org/wiki/Tesla_Model_S",
+          title: "Tesla Model S — Wikipédia",
+        },
+      },
+      {
+        image: {
+          alt: "Tesla Model S — Wikipédia",
+          src: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRmsxnwoceLA1hl_u0MgMbBa35fXTAoumf1JA&usqp=CAU",
+        },
+        link: {
+          domain: "fr.wikipedia.org",
+          href: "https://fr.wikipedia.org/wiki/Tesla_Model_S",
+          title: "Tesla Model S — Wikipédia",
+        },
+      },
+      {
+        image: {
+          alt: "Tesla Model S — Wikipédia",
+          src: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRmsxnwoceLA1hl_u0MgMbBa35fXTAoumf1JA&usqp=CAU",
+        },
+        link: {
+          domain: "fr.wikipedia.org",
+          href: "https://fr.wikipedia.org/wiki/Tesla_Model_S",
+          title: "Tesla Model S — Wikipédia",
+        },
+      },
+    ],
+    results: [],
+    total: null,
+  };
 
   const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
-      resolve(data);
-    }, 2000);
+      resolve(dataImg);
+    }, 500);
   });
 
   return promise;
