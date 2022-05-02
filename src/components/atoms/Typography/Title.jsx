@@ -2,8 +2,8 @@ import { useMemo } from "react";
 
 const Title = ({ className, text }) => {
   const shorthTitle = useMemo(() => {
-    if (text.length > 30) {
-      return text.substring(0, 30) + " ...";
+    if (text.length > 100) {
+      return text.substring(0, 100) + " ...";
     }
     return text;
   }, [text]);

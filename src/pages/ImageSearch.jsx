@@ -39,7 +39,7 @@ const ImageSearch = () => {
         <p>loading...</p>
       ) : (
         <ContentWrapper className="p-2 lg:p-6">
-          <CardsWrapper className="w-full flex flex-col lg:flex-row flex-wrap justify-center items-center gap-8">
+          <CardsWrapper className="w-full flex flex-col lg:flex-row flex-wrap justify-center items-center gap-4 lg:gap-7">
             {dataApi.image_results?.map((result, idx) => (
               <ImageCard key={idx} result={result} />
             ))}

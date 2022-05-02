@@ -6,7 +6,7 @@ const ImageCard = ({ result }) => {
   return (
     <div className="flex flex-col gap-2">
       <img
-        className="cursor-pointer hover:shadow-lg hover:dark:shadow-gray-800"
+        className="cursor-pointer hover:shadow-lg hover:shadow-gray-300 hover:dark:shadow-gray-800 hover:scale-105 transition ease-in-out duration-200 w-full max-w-xs"
         src={image.src}
         alt={image.alt}
       />
