@@ -3,6 +3,7 @@ import Home from "../pages/Home";
 import ImageSearch from "../pages/ImageSearch";
 import NewsSearch from "../pages/NewsSearch";
 import NotFound from "../pages/NotFound";
+import ReadingList from "../pages/ReadingList";
 import Search from "../pages/Search";
 
 const Routes = () => {
@@ -22,6 +23,10 @@ const Routes = () => {
     {
       path: "/news",
       element: <NewsSearch />,
+    },
+    {
+      path: "/reading-list",
+      element: <ReadingList />,
     },
     {
       path: "404",

@@ -15,14 +15,14 @@ const Search = () => {
     desc: "Search engine google api",
   };
   const { state, dispatch } = UseGlobalContext();
-  const { dataApi, isLoading } = state;
+  const { dataApi, isLoading, keyword } = state;
   const query = useLocation().search;
   const pathUrl = useLocation().pathname;
 
   useEffect(() => {
-    const keyword = query.slice(3).split("+").join(" ");
+    const newKeyword = query.slice(3).split("+").join(" ");
     const type = pathUrl.substring(1);
-    dispatch({ type: "CHANGE_KEYWORD", payload: keyword });
+    dispatch({ type: "CHANGE_KEYWORD", payload: newKeyword });
     dispatch({ type: "CHANGE_TYPE", payload: type });
     dispatch({ type: "CHANGE_IS_LOADING", payload: true });
 
@@ -33,7 +33,7 @@ const Search = () => {
       .catch((err) => {
         dispatch({ type: "SET_IS_ERROR", payload: true });
       });
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [keyword]); // eslint-disable-line react-hooks/exhaustive-deps
 
   console.log(dataApi);
 

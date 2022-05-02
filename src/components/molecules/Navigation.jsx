@@ -73,7 +73,9 @@ const Navigation = ({ changeTheme, changeType, theme, type }) => {
   };
 
   const handleClearInput = (e) => {
-    setInput(() => "");
+    if (location.pathname !== "/reading-list") {
+      setInput(() => "");
+    }
   };
 
   const handleSubmit = (e) => {
@@ -108,6 +110,7 @@ const Navigation = ({ changeTheme, changeType, theme, type }) => {
             type="text"
             value={input}
             onChange={handleChangeInput}
+            disabled={location.pathname === "/reading-list" ? true : false}
           />
           {input && (
             <IconClose

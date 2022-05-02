@@ -39,6 +39,12 @@ const MenuBar = () => {
           icon={<IconNews className="w-3 h-3 lg:w-5 lg:h-5" />}
           onClick={() => handleChangeMenu("news")}
         />
+        <ButtonPrefixIcon
+          className={getActiveClass("reading-list", type)}
+          text="Reading List"
+          icon={<IconNews className="w-3 h-3 lg:w-5 lg:h-5" />}
+          onClick={() => handleChangeMenu("reading-list")}
+        />
       </div>
       <hr className="border-b border-gray-200 dark:border-gray-700" />
     </section>
