@@ -24,9 +24,9 @@ const ImageSearch = () => {
     dispatch({ type: "CHANGE_TYPE", payload: type });
     dispatch({ type: "CHANGE_IS_LOADING", payload: true });
 
-    getSearchApi()
-      .then((res) => {
-        dispatch({ type: "SET_DATA_API", payload: res });
+    getSearchApi(type, query)
+      .then(({ data }) => {
+        dispatch({ type: "SET_DATA_API", payload: data });
       })
       .catch((err) => {
         dispatch({ type: "SET_IS_ERROR", payload: true });

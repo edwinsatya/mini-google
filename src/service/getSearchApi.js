@@ -1,6 +1,6 @@
 import Axios from "./axiosInstance";
 
-const getSearchApi = async () => {
+const getSearchApi = async (type, query) => {
   let data = {
     results: [
       {
@@ -206,9 +206,13 @@ const getSearchApi = async () => {
 
   const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
-      resolve(data);
+      resolve({
+        data,
+      });
     }, 500);
   });
+
+  // return await Axios.get(`/${type}/${query.slice(1)}`);
 
   return promise;
 };

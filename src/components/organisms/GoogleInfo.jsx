@@ -1,6 +1,6 @@
 const GoogleInfo = () => {
   return (
-    <div className="hidden lg:flex flex-col w-4/12 rounded-lg border border-gray-400">
+    <div className="hidden lg:flex flex-col w-4/12 rounded-lg border border-gray-400 h-fit">
       <div className="h-40 w-full border-b border-gray-400 flex items-center p-4">
         <div className="w-1/2 flex flex-col gap-2">
           <h1 className="text-4xl font-medium">Google</h1>
