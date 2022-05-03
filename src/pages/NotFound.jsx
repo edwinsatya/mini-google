@@ -9,7 +9,7 @@ const NotFound = () => {
     <div className="h-screen flex justify-center items-center">
       <Helmet>
         <meta charSet="utf-8" />
-        <title>404 Page Notfound</title>
+        <title>404 | Page Notfound</title>
         <meta name="description" content="Page Notfound" />
       </Helmet>
 

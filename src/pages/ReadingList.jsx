@@ -7,14 +7,14 @@ import CardsWrapper from "../components/molecules/Cards/CardsWrapper";
 import NewsCard from "../components/molecules/Cards/NewsCard";
 
 const NewsSearch = () => {
+  const query = useLocation().search;
+  const pathUrl = useLocation().pathname;
   const meta = {
-    title: "Google Search",
+    title: "List Reading News Google Search",
     desc: "Search engine google api",
   };
   const { state, dispatch } = UseGlobalContext();
   const { keyword, listReadingNews } = state;
-  const query = useLocation().search;
-  const pathUrl = useLocation().pathname;
 
   const handleRemoveNews = (news) => {
     const currentLocalNews = JSON.parse(localStorage.getItem("listNews"));
@@ -48,7 +48,7 @@ const NewsSearch = () => {
     <Layout {...meta}>
       <ContentWrapper className="py-2 px-6 lg:py-6 lg:px-28">
         <CardsWrapper className="flex flex-col gap-2 lg:gap-4">
-          {computedListNews.length === 0 ? (
+          {computedListNews?.length === 0 ? (
             <h1 className="text-xs lg:text-lg">No Have News</h1>
           ) : (
             computedListNews?.map((result, idx) => (

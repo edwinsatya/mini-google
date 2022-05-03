@@ -10,14 +10,14 @@ import Loading from "../components/molecules/Loading";
 import ErrorServer from "../components/molecules/ErrorServer";
 
 const NewsSearch = () => {
+  const query = useLocation().search;
+  const pathUrl = useLocation().pathname;
   const meta = {
-    title: "Google Search",
+    title: `${query.slice(3).split("+").join(" ")} | Google Search`,
     desc: "Search engine google api",
   };
   const { state, dispatch } = UseGlobalContext();
   const { dataApi, isLoading, isError, keyword, listReadingNews } = state;
-  const query = useLocation().search;
-  const pathUrl = useLocation().pathname;
 
   const handleAddNews = (news) => {
     const currentLocalNews = JSON.parse(localStorage.getItem("listNews"));
@@ -101,14 +101,18 @@ const NewsSearch = () => {
     <Layout {...meta}>
       <ContentWrapper className="py-2 px-6 lg:py-6 lg:px-28">
         <CardsWrapper className="flex flex-col gap-2 lg:gap-4">
-          {computedListNews?.map((result, idx) => (
-            <NewsCard
-              key={idx}
-              result={result}
-              addNews={() => handleAddNews(result)}
-              removeNews={() => handleRemoveNews(result)}
-            />
-          ))}
+          {computedListNews?.length === 0 ? (
+            <h1 className="text-xs lg:text-lg">No Have News</h1>
+          ) : (
+            computedListNews?.map((result, idx) => (
+              <NewsCard
+                key={idx}
+                result={result}
+                addNews={() => handleAddNews(result)}
+                removeNews={() => handleRemoveNews(result)}
+              />
+            ))
+          )}
         </CardsWrapper>
       </ContentWrapper>
     </Layout>

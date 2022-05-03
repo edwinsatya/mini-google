@@ -13,14 +13,14 @@ import Loading from "../components/molecules/Loading";
 import ErrorServer from "../components/molecules/ErrorServer";
 
 const Search = () => {
+  const query = useLocation().search;
+  const pathUrl = useLocation().pathname;
   const meta = {
-    title: "Google Search",
+    title: `${query.slice(3).split("+").join(" ")} | Google Search`,
     desc: "Search engine google api",
   };
   const { state, dispatch } = UseGlobalContext();
   const { dataApi, isLoading, keyword, isError } = state;
-  const query = useLocation().search;
-  const pathUrl = useLocation().pathname;
 
   useEffect(() => {
     const newKeyword = query.slice(3).split("+").join(" ");
@@ -67,26 +67,30 @@ const Search = () => {
         />
         <div className="flex w-full gap-3 lg:gap-10">
           <CardsWrapper className="w-full lg:w-8/12 flex flex-col gap-3">
-            {dataApi?.results?.map((result, idx) => {
-              if (idx === 1) {
-                return (
-                  <div key={idx}>
-                    {dataApi?.answers?.length > 0 && (
-                      <Accordion dataAccordion={dataApi?.answers ?? []} />
-                    )}
+            {dataApi?.results?.length === 0 ? (
+              <h1 className="text-xs lg:text-lg">No Have Search</h1>
+            ) : (
+              dataApi?.results?.map((result, idx) => {
+                if (idx === 1) {
+                  return (
+                    <div key={idx}>
+                      {dataApi?.answers?.length > 0 && (
+                        <Accordion dataAccordion={dataApi?.answers ?? []} />
+                      )}
 
-                    <SearchCard
-                      className={`${
-                        dataApi?.answers?.length > 0 ? "mt-3 lg:mt-5" : ""
-                      }`}
-                      result={result}
-                    />
-                  </div>
-                );
-              } else {
-                return <SearchCard key={idx} result={result} />;
-              }
-            })}
+                      <SearchCard
+                        className={`${
+                          dataApi?.answers?.length > 0 ? "mt-3 lg:mt-5" : ""
+                        }`}
+                        result={result}
+                      />
+                    </div>
+                  );
+                } else {
+                  return <SearchCard key={idx} result={result} />;
+                }
+              })
+            )}
           </CardsWrapper>
           <GoogleInfo />
         </div>

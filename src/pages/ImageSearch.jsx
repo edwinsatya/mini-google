@@ -10,14 +10,14 @@ import Loading from "../components/molecules/Loading";
 import ErrorServer from "../components/molecules/ErrorServer";
 
 const ImageSearch = () => {
+  const query = useLocation().search;
+  const pathUrl = useLocation().pathname;
   const meta = {
-    title: "Google Search",
+    title: `${query.slice(3).split("+").join(" ")} | Google Search`,
     desc: "Search engine google api",
   };
   const { state, dispatch } = UseGlobalContext();
   const { dataApi, isLoading, isError, keyword } = state;
-  const query = useLocation().search;
-  const pathUrl = useLocation().pathname;
 
   useEffect(() => {
     const newKeyword = query.slice(3).split("+").join(" ");
@@ -59,9 +59,13 @@ const ImageSearch = () => {
     <Layout {...meta}>
       <ContentWrapper className="p-2 lg:p-6">
         <CardsWrapper className="w-full flex flex-col lg:flex-row flex-wrap justify-center items-center gap-4 lg:gap-7">
-          {dataApi?.image_results?.map((result, idx) => (
-            <ImageCard key={idx} result={result} />
-          ))}
+          {dataApi?.image_results?.length === 0 ? (
+            <h1 className="text-xs lg:text-lg">No Have Images</h1>
+          ) : (
+            dataApi?.image_results?.map((result, idx) => (
+              <ImageCard key={idx} result={result} />
+            ))
+          )}
         </CardsWrapper>
       </ContentWrapper>
     </Layout>
