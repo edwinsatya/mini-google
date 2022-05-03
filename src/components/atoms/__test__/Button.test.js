@@ -4,11 +4,12 @@ import renderer from "react-test-renderer";
 
 describe("Render Button Atom Component", () => {
   it("Should be render without crashing", () => {
-    const button = document.createElement("button");
-    render(<Button />, button);
+    render(<Button text="Search" />);
+    const button = screen.getByTestId("button");
+    expect(button).toBeTruthy();
   });
 
-  it("Should be render correctly", () => {
+  it("Should be render text correctly", () => {
     render(<Button text="Search" />);
     const button = screen.getByTestId("button");
     expect(button).toHaveTextContent("Search");
