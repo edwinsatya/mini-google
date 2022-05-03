@@ -24,7 +24,7 @@ const GoogleInfo = () => {
         </div>
         <div>
           <p>
-            <span className="font-medium">CEO : </span>
+            <span className="font-bold">CEO : </span>
             <span className="text-blue-600 dark:text-blue-400">
               Sundar Pichai
             </span>
@@ -32,10 +32,45 @@ const GoogleInfo = () => {
           </p>
 
           <p>
-            <span className="font-medium">Be Founded : </span>
+            <span className="font-bold">Be Founded : </span>
             <span>4 September 1998, </span>
             <span className="text-blue-600 dark:text-blue-400">
               Menlo Park, California, Amerika
+            </span>
+          </p>
+
+          <p>
+            <span className="font-bold">Head Office : </span>
+            <span className="text-blue-600 dark:text-blue-400">
+              Mountain view, California, America
+            </span>
+          </p>
+
+          <p>
+            <span className="font-bold">Type : </span>
+            <span className="text-blue-600 dark:text-blue-400">
+              Limited Company, Subsidiary
+            </span>
+          </p>
+
+          <p>
+            <span className="font-bold">Subsidiary : </span>
+            <span className="text-blue-600 dark:text-blue-400">
+              YouTube, Dialogflow, Kaggle, AdMob, Looker, ETC
+            </span>
+          </p>
+
+          <p>
+            <span className="font-bold">Founder : </span>
+            <span className="text-blue-600 dark:text-blue-400">
+              Larry Page, Sergey Brin
+            </span>
+          </p>
+
+          <p>
+            <span className="font-bold">Parent Organization : </span>
+            <span className="text-blue-600 dark:text-blue-400">
+              Alphabet Inc.
             </span>
           </p>
         </div>

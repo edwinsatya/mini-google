@@ -6,6 +6,7 @@ import getSearchApi from "../service/getSearchApi";
 import ContentWrapper from "../components/organisms/ContentWrapper";
 import CardsWrapper from "../components/molecules/Cards/CardsWrapper";
 import ImageCard from "../components/molecules/Cards/ImageCard";
+import Loading from "../components/atoms/Loading";
 
 const ImageSearch = () => {
   const meta = {
@@ -33,19 +34,25 @@ const ImageSearch = () => {
       });
   }, [keyword]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  if (isLoading) {
+    return (
+      <Layout {...meta}>
+        <ContentWrapper className="px-1 pb-2 lg:pb-8 lg:px-24">
+          <Loading />
+        </ContentWrapper>
+      </Layout>
+    );
+  }
+
   return (
     <Layout {...meta}>
-      {isLoading ? (
-        <p>loading...</p>
-      ) : (
-        <ContentWrapper className="p-2 lg:p-6">
-          <CardsWrapper className="w-full flex flex-col lg:flex-row flex-wrap justify-center items-center gap-4 lg:gap-7">
-            {dataApi?.image_results?.map((result, idx) => (
-              <ImageCard key={idx} result={result} />
-            ))}
-          </CardsWrapper>
-        </ContentWrapper>
-      )}
+      <ContentWrapper className="p-2 lg:p-6">
+        <CardsWrapper className="w-full flex flex-col lg:flex-row flex-wrap justify-center items-center gap-4 lg:gap-7">
+          {dataApi?.image_results?.map((result, idx) => (
+            <ImageCard key={idx} result={result} />
+          ))}
+        </CardsWrapper>
+      </ContentWrapper>
     </Layout>
   );
 };

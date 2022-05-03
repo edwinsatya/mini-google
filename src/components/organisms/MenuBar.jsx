@@ -10,13 +10,15 @@ import IconCollection from "../atoms/IconSvg/IconCollection";
 
 const MenuBar = () => {
   const { state, dispatch } = UseGlobalContext();
-  const { type, keyword } = state;
+  const { type, keyword, isLoading } = state;
   const navigate = useNavigate();
 
   const handleChangeMenu = (typeCheck) => {
-    dispatch({ type: "CHANGE_TYPE", payload: typeCheck });
-    const path = getQueryPath(typeCheck, keyword);
-    navigate(path);
+    if (!isLoading) {
+      dispatch({ type: "CHANGE_TYPE", payload: typeCheck });
+      const path = getQueryPath(typeCheck, keyword);
+      navigate(path);
+    }
   };
 
   return (

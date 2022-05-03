@@ -14,7 +14,7 @@ const Navigation = ({ changeTheme, changeType, theme, type }) => {
   };
 
   const { state, dispatch } = UseGlobalContext();
-  const { keyword } = state;
+  const { keyword, isLoading } = state;
   const [input, setInput] = useState("");
 
   const location = useLocation();
@@ -110,7 +110,7 @@ const Navigation = ({ changeTheme, changeType, theme, type }) => {
             type="text"
             value={input}
             onChange={handleChangeInput}
-            disabled={location.pathname === "/reading-list" ? true : false}
+            disabled={location.pathname === "/reading-list" || isLoading}
           />
           {input && (
             <IconClose

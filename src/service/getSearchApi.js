@@ -207,9 +207,9 @@ const getSearchApi = async (type, query) => {
   const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve({
-        data: dataNews,
+        data: data,
       });
-    }, 500);
+    }, 2500);
   });
 
   // return await Axios.get(`/${type}/${query.slice(1)}`);

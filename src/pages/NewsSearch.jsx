@@ -6,6 +6,7 @@ import getSearchApi from "../service/getSearchApi";
 import ContentWrapper from "../components/organisms/ContentWrapper";
 import CardsWrapper from "../components/molecules/Cards/CardsWrapper";
 import NewsCard from "../components/molecules/Cards/NewsCard";
+import Loading from "../components/atoms/Loading";
 
 const NewsSearch = () => {
   const meta = {
@@ -75,24 +76,30 @@ const NewsSearch = () => {
       });
   }, [keyword]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  if (isLoading) {
+    return (
+      <Layout {...meta}>
+        <ContentWrapper className="px-1 pb-2 lg:pb-8 lg:px-24">
+          <Loading />
+        </ContentWrapper>
+      </Layout>
+    );
+  }
+
   return (
     <Layout {...meta}>
-      {isLoading ? (
-        <p>loading...</p>
-      ) : (
-        <ContentWrapper className="py-2 px-6 lg:py-6 lg:px-28">
-          <CardsWrapper className="flex flex-col gap-2 lg:gap-4">
-            {computedListNews?.map((result, idx) => (
-              <NewsCard
-                key={idx}
-                result={result}
-                addNews={() => handleAddNews(result)}
-                removeNews={() => handleRemoveNews(result)}
-              />
-            ))}
-          </CardsWrapper>
-        </ContentWrapper>
-      )}
+      <ContentWrapper className="py-2 px-6 lg:py-6 lg:px-28">
+        <CardsWrapper className="flex flex-col gap-2 lg:gap-4">
+          {computedListNews?.map((result, idx) => (
+            <NewsCard
+              key={idx}
+              result={result}
+              addNews={() => handleAddNews(result)}
+              removeNews={() => handleRemoveNews(result)}
+            />
+          ))}
+        </CardsWrapper>
+      </ContentWrapper>
     </Layout>
   );
 };

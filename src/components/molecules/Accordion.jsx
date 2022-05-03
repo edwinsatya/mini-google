@@ -37,7 +37,7 @@ const Accordion = ({ className, dataAccordion }) => {
             `}
           >
             <div
-              className="flex justify-between items-center"
+              className="flex justify-between items-center cursor-pointer"
               onClick={() => handleShowDetail(idx)}
             >
               <Description
