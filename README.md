@@ -9,7 +9,7 @@
 - git clone : https://github.com/edwinsatya/mini-google.git
 - npm install or if any error message try npm install --legacy-peer-deps
 - create new env file ex: .env.development, for example env you can check file with name .env.development_example.txt
-- npm run dev
+- npm run start
 
 ### Api
 
