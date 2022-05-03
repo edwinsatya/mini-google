@@ -1,70 +1,100 @@
-# Getting Started with Create React App
+# Mini-Google
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Portfolio mini-google using react, try to the best to clone google.com
 
-## Available Scripts
+### by : Edwin Satya Yudistira
 
-In the project directory, you can run:
+### How to Access
 
-### `npm start`
+- git clone : https://github.com/edwinsatya/mini-google.git
+- npm install or if any error message try npm install --legacy-peer-deps
+- create new env file ex: .env.development, for example env you can check file with name .env.development_example.txt
+- npm run dev
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Api
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Iam using (https://rapidapi.com/apigeek/api/google-search3/) api for develop this project :
 
-### `npm test`
+- baseUrl: https://google-search3.p.rapidapi.com/api/v1
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  #### List Params Api
 
-### `npm run build`
+  - /search :
+    ` Get data by keyword, display all specific result equal your keyword`
+  - /image :
+    ` Get data by keyword, display some image result equal your keyword`
+  - /news :
+    ` Get data by keyword, display some news result equal your keyword`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  #### Query Api
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  - ?q= :
+    ` Example query: /search?q=elon+musk, display all data according to keyword`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Page
 
-### `npm run eject`
+- Title : Google
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+  #### path : `/`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  #### desc : `This page is the first lading page, i try implement UI similar like google.com, in the header any navigation for choose filter : search, image, news and any toggle button for setting dark/light mode`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Title : [keyword] | Google Search
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+  #### path : `/search`
 
-## Learn More
+  #### desc : `This page is display your result according to keyword, in header have input for keyword and toggle darkmode, have sub navigation for change filter (search, image, news, readinglist) `
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Title : [keyword] | Google Search
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  #### path : `/image`
 
-### Code Splitting
+  #### desc : `This page is display image result according to keyword, for the UI same like in /search page, but have little different in content`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Title : [keyword] | Google Search
 
-### Analyzing the Bundle Size
+  #### path : `/news`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+  #### desc : `This page is display news result according to keyword, for the UI same like in /search page, but have little different in content. for each news have button add and remove. add for adding to /reading-list page, remove for removing from /reading-list page`
 
-### Making a Progressive Web App
+- Title : List Reading News Google Search
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+  #### path : `/reading-list`
 
-### Advanced Configuration
+  #### desc : `This page is display all news after you added from /news page, you can remove that news with click (remove), this page is persist`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Title : 404 | Page Notfound
+  #### path : `/*`
+  #### desc : `This page for handle routes not match`
+
+### Additional Features
+
+- Dark or Light mode : `Iam implement with 2 modes, first mode in first time landing automatic read your device system, if your device using setting dark mode, this website auto selected dark. and second mode is manual toggle in the navigation menu on header`
+
+- Performance checked: `Using lighthouse for checking performance`
+
+- Add and Remove news: `Explanation: in news page you can add some news. After you added in the reading-list page display all news already added. You can't add the same news. For handle this feature i play some logic in the footer card, have two button (add and remove). Ex: any news A with id 'a' and news B with id 'b', for the first time each news just display button [add], after you added some one news, example you add news A, the footer card now just display [remove]. Not just in reading-list page, in the news page you can still remove the news from your list. in the reading-list page you just can remove that news`
+
+- Persist page : `using (local storage)`
+
+- State management : `using useContext + useReducer`
+
+- Web responsive : `suport mobile and desktop screen`
+
+- Loading component : `handle process if fetching data api not finished, iam using react-spinners`
+
+### Integration Test
+
+- npm run test -> press 'a' (for all test)
+
+  #### Using : `react testing library and jest`
+
+  #### have example testing in folder helpers (function test) and atoms component (react test)
+
+### Styling
+
+- Tailwind css : https://tailwindcss.com/
 
 ### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Deploy in vercel : https://mini-google.edwinsatya.com/
