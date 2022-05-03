@@ -1,8 +1,8 @@
 import { Helmet } from "react-helmet";
+import { useLocation } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
 import MenuBar from "./MenuBar";
-import { useLocation } from "react-router-dom";
 
 const Layout = ({ children, title, desc }) => {
   const pathUrl = useLocation().pathname;
