@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputText Atom Component Matches inputText snapshoot 1`] = `
+<div
+  className="w-full"
+>
+  <input
+    className="undefined w-full "
+    data-testid="input-text"
+    onChange={[Function]}
+    type="text"
+  />
+</div>
+`;

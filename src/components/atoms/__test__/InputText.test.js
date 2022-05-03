@@ -1,4 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
+import renderer from "react-test-renderer";
 import InputText from "../InputText.jsx";
 
 describe("InputText Atom Component", () => {
@@ -41,5 +42,10 @@ describe("InputText Atom Component", () => {
     });
 
     expect(inputText).toHaveValue(testValue);
+  });
+
+  it("Matches inputText snapshoot", () => {
+    const tree = renderer.create(<InputText type="text" />).toJSON();
+    expect(tree).toMatchSnapshot();
   });
 });
