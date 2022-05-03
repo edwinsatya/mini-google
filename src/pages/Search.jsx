@@ -52,11 +52,16 @@ const Search = () => {
                 if (idx === 1) {
                   return (
                     <div key={idx}>
-                      {dataApi.answers.length > 0 && (
+                      {dataApi?.answers?.length > 0 && (
                         <Accordion dataAccordion={dataApi?.answers ?? []} />
                       )}
 
-                      <SearchCard className="mt-3 lg:mt-5" result={result} />
+                      <SearchCard
+                        className={`${
+                          dataApi?.answers?.length > 0 ? "mt-3 lg:mt-5" : ""
+                        }`}
+                        result={result}
+                      />
                     </div>
                   );
                 } else {

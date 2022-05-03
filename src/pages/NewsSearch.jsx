@@ -49,7 +49,7 @@ const NewsSearch = () => {
   const computedListNews = useMemo(() => {
     const currentLocalNews = JSON.parse(localStorage.getItem("listNews"));
     if (currentLocalNews) {
-      return dataApi.entries?.map((news) => {
+      return dataApi?.entries?.map((news) => {
         return {
           ...news,
           inReadingList: currentLocalNews[news.id] ? true : false,

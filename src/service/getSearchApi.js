@@ -207,7 +207,7 @@ const getSearchApi = async (type, query) => {
   const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve({
-        data,
+        data: dataNews,
       });
     }, 500);
   });
