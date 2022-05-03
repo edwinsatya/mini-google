@@ -19,4 +19,10 @@ describe("InputText Atom Component", () => {
     const inputText = screen.getByTestId("input-text");
     expect(inputText).toBeEnabled();
   });
+
+  it("Should be render with type correctly", () => {
+    render(<InputText type="text" />);
+    const inputText = screen.getByTestId("input-text");
+    expect(inputText).toHaveAttribute("type", "text");
+  });
 });
