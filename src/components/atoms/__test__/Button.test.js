@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import Button from "../Button";
 import renderer from "react-test-renderer";
 
-describe("Render Button Atom Component", () => {
+describe("Button Atom Component", () => {
   it("Should be render without crashing", () => {
     render(<Button text="Search" />);
     const button = screen.getByTestId("button");

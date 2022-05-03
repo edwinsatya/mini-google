@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render Button Atom Component Matches button snapshot 1`] = `
+exports[`Button Atom Component Matches button snapshot 1`] = `
 <button
   className="undefined cursor-pointer"
   data-testid="button"
