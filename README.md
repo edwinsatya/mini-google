@@ -99,4 +99,6 @@ Iam using (https://rapidapi.com/apigeek/api/google-search3/) api for develop thi
 
 ### Deployment
 
-- Deploy in vercel : https://mini-google.edwinsatya.com/
+- Deploy in vercel
+
+  #### Live demo : https://mini-google.edwinsatya.com/
