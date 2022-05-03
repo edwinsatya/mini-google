@@ -16,15 +16,14 @@ const NewsCard = ({ result, addNews, removeNews }) => {
     const diffTime = Math.abs(date2 - date1);
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
-    switch (diffDays) {
-      case diffDays < 30:
-        return `${diffDays <= 1 ? diffDays + " day" : diffDays + " days"}`;
-      case diffDays < 360:
-        const month = Math.floor(diffDays / 30);
-        return `${month <= 1 ? month + " month" : month + " months"}`;
-      default:
-        const year = Math.floor(diffDays / 360);
-        return `${year <= 1 ? year + " year" : year + " years"}`;
+    if (diffDays < 30) {
+      return `${diffDays <= 1 ? diffDays + " day" : diffDays + " days"}`;
+    } else if (diffDays < 360) {
+      const month = Math.floor(diffDays / 30);
+      return `${month <= 1 ? month + " month" : month + " months"}`;
+    } else {
+      const year = Math.floor(diffDays / 360);
+      return `${year <= 1 ? year + " year" : year + " years"}`;
     }
   }, [published_parsed]);
 

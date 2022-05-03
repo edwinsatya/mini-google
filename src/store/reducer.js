@@ -40,6 +40,7 @@ export const reducer = (state, action) => {
       return {
         ...state,
         isError: action.payload,
+        isLoading: false,
       };
     case "SET_DATA_API":
       return {

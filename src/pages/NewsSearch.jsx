@@ -6,7 +6,8 @@ import getSearchApi from "../service/getSearchApi";
 import ContentWrapper from "../components/organisms/ContentWrapper";
 import CardsWrapper from "../components/molecules/Cards/CardsWrapper";
 import NewsCard from "../components/molecules/Cards/NewsCard";
-import Loading from "../components/atoms/Loading";
+import Loading from "../components/molecules/Loading";
+import ErrorServer from "../components/molecules/ErrorServer";
 
 const NewsSearch = () => {
   const meta = {
@@ -14,7 +15,7 @@ const NewsSearch = () => {
     desc: "Search engine google api",
   };
   const { state, dispatch } = UseGlobalContext();
-  const { dataApi, isLoading, keyword, listReadingNews } = state;
+  const { dataApi, isLoading, isError, keyword, listReadingNews } = state;
   const query = useLocation().search;
   const pathUrl = useLocation().pathname;
 
@@ -72,15 +73,25 @@ const NewsSearch = () => {
         dispatch({ type: "SET_DATA_API", payload: data });
       })
       .catch((err) => {
-        dispatch({ type: "SET_IS_ERROR", payload: true });
+        dispatch({ type: "CHANGE_IS_ERROR", payload: true });
       });
   }, [keyword]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (isLoading) {
     return (
       <Layout {...meta}>
-        <ContentWrapper className="px-1 pb-2 lg:pb-8 lg:px-24">
+        <ContentWrapper className="py-2 px-6 lg:py-6 lg:px-28">
           <Loading />
+        </ContentWrapper>
+      </Layout>
+    );
+  }
+
+  if (isError) {
+    return (
+      <Layout {...meta}>
+        <ContentWrapper className="py-2 px-6 lg:py-6 lg:px-28">
+          <ErrorServer />
         </ContentWrapper>
       </Layout>
     );

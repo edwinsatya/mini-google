@@ -9,7 +9,8 @@ import SearchCard from "../components/molecules/Cards/SearchCard";
 import getSearchApi from "../service/getSearchApi";
 import GoogleInfo from "../components/organisms/GoogleInfo";
 import Accordion from "../components/molecules/Accordion";
-import Loading from "../components/atoms/Loading";
+import Loading from "../components/molecules/Loading";
+import ErrorServer from "../components/molecules/ErrorServer";
 
 const Search = () => {
   const meta = {
@@ -17,7 +18,7 @@ const Search = () => {
     desc: "Search engine google api",
   };
   const { state, dispatch } = UseGlobalContext();
-  const { dataApi, isLoading, keyword } = state;
+  const { dataApi, isLoading, keyword, isError } = state;
   const query = useLocation().search;
   const pathUrl = useLocation().pathname;
 
@@ -33,7 +34,7 @@ const Search = () => {
         dispatch({ type: "SET_DATA_API", payload: data });
       })
       .catch((err) => {
-        dispatch({ type: "SET_IS_ERROR", payload: true });
+        dispatch({ type: "CHANGE_IS_ERROR", payload: true });
       });
   }, [keyword]); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -42,6 +43,16 @@ const Search = () => {
       <Layout {...meta}>
         <ContentWrapper className="px-1 pb-2 lg:pb-8 lg:px-24">
           <Loading />
+        </ContentWrapper>
+      </Layout>
+    );
+  }
+
+  if (isError) {
+    return (
+      <Layout {...meta}>
+        <ContentWrapper className="px-1 pb-2 lg:pb-8 lg:px-24">
+          <ErrorServer />
         </ContentWrapper>
       </Layout>
     );

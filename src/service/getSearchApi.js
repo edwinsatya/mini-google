@@ -204,17 +204,17 @@ const getSearchApi = async (type, query) => {
     feed: {},
   };
 
-  const promise = new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve({
-        data: data,
-      });
-    }, 2500);
-  });
+  // const promise = new Promise((resolve, reject) => {
+  //   setTimeout(() => {
+  //     resolve({
+  //       data: data,
+  //     });
+  //   }, 2500);
+  // });
 
-  // return await Axios.get(`/${type}/${query.slice(1)}`);
+  return await Axios.get(`/${type}/${query.slice(1)}`);
 
-  return promise;
+  // return promise;
 };
 
 export default getSearchApi;
