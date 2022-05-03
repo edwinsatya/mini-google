@@ -83,6 +83,8 @@ Iam using (https://rapidapi.com/apigeek/api/google-search3/) api for develop thi
 
 - Loading component : `handle process if fetching data api not finished, iam using react-spinners`
 
+- Design pattern : `for develop this project iam using concept 'Atomic Design (atoms, molecules, organism)' for easy to maintenance the project`
+
 ### Integration Test
 
 - npm run test -> press 'a' (for all test)
