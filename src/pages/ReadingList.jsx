@@ -49,7 +49,7 @@ const NewsSearch = () => {
       <ContentWrapper className="py-2 px-6 lg:py-6 lg:px-28">
         <CardsWrapper className="flex flex-col gap-2 lg:gap-4">
           {computedListNews.length === 0 ? (
-            <h1>No Have News</h1>
+            <h1 className="text-xs lg:text-lg">No Have News</h1>
           ) : (
             computedListNews?.map((result, idx) => (
               <NewsCard
