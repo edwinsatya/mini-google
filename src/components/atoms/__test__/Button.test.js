@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import Button from "../Button";
 import renderer from "react-test-renderer";
 
@@ -9,13 +9,13 @@ describe("Render Button Atom Component", () => {
   });
 
   it("Should be render correctly", () => {
-    const { getByTestId } = render(<Button text="Search" />);
-    // eslint-disable-next-line testing-library/prefer-screen-queries
-    expect(getByTestId("button")).toHaveTextContent("Search");
+    render(<Button text="Search" />);
+    const button = screen.getByTestId("button");
+    expect(button).toHaveTextContent("Search");
   });
 
   it("Matches button snapshot", () => {
-    const buttonTree = renderer.create(<Button text="Search" />).toJSON();
-    expect(buttonTree).toMatchSnapshot();
+    const tree = renderer.create(<Button text="Search" />).toJSON();
+    expect(tree).toMatchSnapshot();
   });
 });

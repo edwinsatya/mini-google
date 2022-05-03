@@ -8,6 +8,7 @@ const InputText = ({ className, value, onChange, type, disabled }) => {
   return (
     <div className="w-full">
       <input
+        data-testid="input-text"
         className={`${className} w-full ${disabled ? classDisabled : ""}`}
         type={type}
         value={value}
