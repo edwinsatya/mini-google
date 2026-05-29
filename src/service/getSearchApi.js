@@ -1,18 +1,47 @@
+import { parseSearchKeyword } from "../helpers/parseSearchKeyword";
 import Axios from "./axiosInstance";
-// import { data, dataImg, dataNews } from "./dummyData"
+import {
+  mapImageSearchResponse,
+  mapNewsSearchResponse,
+  mapWebSearchResponse,
+} from "./serperMappers";
+
+const SERPER_ENDPOINTS = {
+  search: "/search",
+  image: "/images",
+  news: "/news",
+};
 
 const getSearchApi = async (type, query) => {
-  // try async dummy data using promise
-  // const promise = new Promise((resolve, reject) => {
-  //   setTimeout(() => {
-  //     resolve({
-  //       data: data,
-  //     });
-  //   }, 2500);
-  // });
-  // return promise;
+  const keyword = parseSearchKeyword(query);
 
-  return await Axios.get(`/${type}/${query.slice(1)}`);
+  if (!keyword) {
+    throw new Error("Search keyword is required");
+  }
+
+  if (!process.env.REACT_APP_SERPER_API_KEY) {
+    throw new Error("REACT_APP_SERPER_API_KEY is not configured");
+  }
+
+  const endpoint = SERPER_ENDPOINTS[type] || SERPER_ENDPOINTS.search;
+  const start = performance.now();
+
+  const { data } = await Axios.post(endpoint, {
+    q: keyword,
+    num: 10,
+  });
+
+  const ts = (performance.now() - start) / 1000;
+
+  if (type === "image") {
+    return { data: mapImageSearchResponse(data) };
+  }
+
+  if (type === "news") {
+    return { data: mapNewsSearchResponse(data) };
+  }
+
+  return { data: mapWebSearchResponse(data, ts) };
 };
 
 export default getSearchApi;

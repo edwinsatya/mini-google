@@ -1,12 +1,10 @@
 import axios from "axios";
 
 const Axios = axios.create({
-  baseURL: "https://google-search3.p.rapidapi.com/api/v1",
+  baseURL: "https://google.serper.dev",
   headers: {
-    "X-User-Agent": "desktop",
-    "X-Proxy-Location": "EU",
-    "X-RapidAPI-Host": process.env.REACT_APP_RAPIDAPI_HOST,
-    "X-RapidAPI-Key": process.env.REACT_APP_RAPIDAPI_KEY,
+    "Content-Type": "application/json",
+    "X-API-KEY": process.env.REACT_APP_SERPER_API_KEY,
   },
 });
 

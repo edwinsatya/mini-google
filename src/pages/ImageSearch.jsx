@@ -2,6 +2,7 @@ import { useLocation } from "react-router-dom";
 import { UseGlobalContext } from "../store/context";
 import { useEffect } from "react";
 import Layout from "../components/organisms/Layout";
+import { parseSearchKeyword } from "../helpers/parseSearchKeyword";
 import getSearchApi from "../service/getSearchApi";
 import ContentWrapper from "../components/organisms/ContentWrapper";
 import CardsWrapper from "../components/molecules/Cards/CardsWrapper";
@@ -13,14 +14,14 @@ const ImageSearch = () => {
   const query = useLocation().search;
   const pathUrl = useLocation().pathname;
   const meta = {
-    title: `${query.slice(3).split("+").join(" ")} | Google Search`,
+    title: `${parseSearchKeyword(query)} | Google Search`,
     desc: "Search engine google api",
   };
   const { state, dispatch } = UseGlobalContext();
   const { dataApi, isLoading, isError, keyword } = state;
 
   useEffect(() => {
-    const newKeyword = query.slice(3).split("+").join(" ");
+    const newKeyword = parseSearchKeyword(query);
     const type = pathUrl.substring(1);
     dispatch({ type: "CHANGE_KEYWORD", payload: newKeyword });
     dispatch({ type: "CHANGE_TYPE", payload: type });

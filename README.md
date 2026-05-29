@@ -13,23 +13,21 @@
 
 ### Api
 
-Iam using (https://rapidapi.com/apigeek/api/google-search3/) api for develop this project :
+This project uses [Serper.dev](https://serper.dev/) for Google Search, Images, and News results.
 
-- baseUrl: https://google-search3.p.rapidapi.com/api/v1
+- baseUrl: `https://google.serper.dev`
+- Get a free API key at https://serper.dev/ (2,500 free queries)
+- Add `REACT_APP_SERPER_API_KEY` to `.env.development` (see `.env.development_example.txt`)
 
-  #### List Params Api
+  #### Endpoints (mapped from page routes)
 
-  - /search :
-    ` Get data by keyword, display all specific result equal your keyword`
-  - /image :
-    ` Get data by keyword, display some image result equal your keyword`
-  - /news :
-    ` Get data by keyword, display some news result equal your keyword`
+  - `/search` → `POST /search` — web results, people also ask
+  - `/image` → `POST /images` — image results
+  - `/news` → `POST /news` — news articles
 
-  #### Query Api
+  #### Query param
 
-  - ?q= :
-    ` Example query: /search?q=elon+musk, display all data according to keyword`
+  - `?q=` — Example: `/search?q=elon+musk`
 
 ### Page
 

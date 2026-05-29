@@ -1,4 +1,5 @@
 import { useLocation } from "react-router-dom";
+import { parseSearchKeyword } from "../helpers/parseSearchKeyword";
 import { UseGlobalContext } from "../store/context";
 import { useEffect, useMemo } from "react";
 import Layout from "../components/organisms/Layout";
@@ -36,7 +37,7 @@ const NewsSearch = () => {
   }, [listReadingNews]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
-    const newKeyword = query.slice(3).split("+").join(" ");
+    const newKeyword = parseSearchKeyword(query);
     const type = pathUrl.substring(1);
     const currentLocalNews = JSON.parse(localStorage.getItem("listNews"));
     dispatch({ type: "CHANGE_KEYWORD", payload: newKeyword });

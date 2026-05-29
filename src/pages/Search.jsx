@@ -6,6 +6,7 @@ import Layout from "../components/organisms/Layout";
 import ContentWrapper from "../components/organisms/ContentWrapper";
 import CardsWrapper from "../components/molecules/Cards/CardsWrapper";
 import SearchCard from "../components/molecules/Cards/SearchCard";
+import { parseSearchKeyword } from "../helpers/parseSearchKeyword";
 import getSearchApi from "../service/getSearchApi";
 import GoogleInfo from "../components/organisms/GoogleInfo";
 import Accordion from "../components/molecules/Accordion";
@@ -16,14 +17,14 @@ const Search = () => {
   const query = useLocation().search;
   const pathUrl = useLocation().pathname;
   const meta = {
-    title: `${query.slice(3).split("+").join(" ")} | Google Search`,
+    title: `${parseSearchKeyword(query)} | Google Search`,
     desc: "Search engine google api",
   };
   const { state, dispatch } = UseGlobalContext();
   const { dataApi, isLoading, keyword, isError } = state;
 
   useEffect(() => {
-    const newKeyword = query.slice(3).split("+").join(" ");
+    const newKeyword = parseSearchKeyword(query);
     const type = pathUrl.substring(1);
     dispatch({ type: "CHANGE_KEYWORD", payload: newKeyword });
     dispatch({ type: "CHANGE_TYPE", payload: type });

@@ -1,19 +1,20 @@
-import { useLocation } from "react-router-dom";
-import { UseGlobalContext } from "../store/context";
 import { useEffect, useMemo } from "react";
-import Layout from "../components/organisms/Layout";
-import getSearchApi from "../service/getSearchApi";
-import ContentWrapper from "../components/organisms/ContentWrapper";
+import { useLocation } from "react-router-dom";
 import CardsWrapper from "../components/molecules/Cards/CardsWrapper";
 import NewsCard from "../components/molecules/Cards/NewsCard";
-import Loading from "../components/molecules/Loading";
 import ErrorServer from "../components/molecules/ErrorServer";
+import Loading from "../components/molecules/Loading";
+import ContentWrapper from "../components/organisms/ContentWrapper";
+import Layout from "../components/organisms/Layout";
+import { parseSearchKeyword } from "../helpers/parseSearchKeyword";
+import getSearchApi from "../service/getSearchApi";
+import { UseGlobalContext } from "../store/context";
 
 const NewsSearch = () => {
   const query = useLocation().search;
   const pathUrl = useLocation().pathname;
   const meta = {
-    title: `${query.slice(3).split("+").join(" ")} | Google Search`,
+    title: `${parseSearchKeyword(query)} | Google Search`,
     desc: "Search engine google api",
   };
   const { state, dispatch } = UseGlobalContext();
@@ -62,7 +63,7 @@ const NewsSearch = () => {
   }, [dataApi, listReadingNews]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
-    const newKeyword = query.slice(3).split("+").join(" ");
+    const newKeyword = parseSearchKeyword(query);
     const type = pathUrl.substring(1);
     dispatch({ type: "CHANGE_KEYWORD", payload: newKeyword });
     dispatch({ type: "CHANGE_TYPE", payload: type });
@@ -80,7 +81,7 @@ const NewsSearch = () => {
   if (isLoading) {
     return (
       <Layout {...meta}>
-        <ContentWrapper className="py-2 px-6 lg:py-6 lg:px-28">
+        <ContentWrapper className="px-6 py-2 lg:py-6 lg:px-28">
           <Loading />
         </ContentWrapper>
       </Layout>
@@ -90,7 +91,7 @@ const NewsSearch = () => {
   if (isError) {
     return (
       <Layout {...meta}>
-        <ContentWrapper className="py-2 px-6 lg:py-6 lg:px-28">
+        <ContentWrapper className="px-6 py-2 lg:py-6 lg:px-28">
           <ErrorServer />
         </ContentWrapper>
       </Layout>
@@ -99,7 +100,7 @@ const NewsSearch = () => {
 
   return (
     <Layout {...meta}>
-      <ContentWrapper className="py-2 px-6 lg:py-6 lg:px-28">
+      <ContentWrapper className="px-6 py-2 lg:py-6 lg:px-28">
         <CardsWrapper className="flex flex-col gap-2 lg:gap-4">
           {computedListNews?.length === 0 ? (
             <h1 className="text-xs lg:text-lg">No Have News</h1>
